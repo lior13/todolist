@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="?android:attr/listPreferredItemHeight"
+    android:padding="6dip" >
+
+    <ImageView
+        android:id="@+id/todo"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:contentDescription="@string/todo_img"
+        android:src="@drawable/todo"
+        android:layout_marginEnd="6dip"
+        android:layout_alignParentTop="true" />
+
+    <TextView
+        android:id="@+id/line"
+        android:layout_width="fill_parent"
+        android:layout_height="26dip"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:text="@string/TODO_DESCRIPTION"
+        android:textSize="20sp"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@+id/todo" />
+
+</RelativeLayout>
