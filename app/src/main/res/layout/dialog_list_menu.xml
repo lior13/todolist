@@ -23,6 +23,18 @@
         android:layout_marginBottom="8dp"/>
 
     <TextView
+        android:id="@+id/call"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/green"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:visibility="gone"/>
+
+    <TextView
         android:id="@+id/delete"
         android:layout_width="match_parent"
         android:layout_height="50dp"

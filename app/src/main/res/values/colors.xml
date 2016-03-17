@@ -5,6 +5,8 @@
     <color name="colorAccent">#B22222</color>
     <color name="black">#000000</color>
     <color name="grey">#C0C0C0</color>
+    <color name="green">#32CD32</color>
+    <color name="red">#FF0000</color>
     <item name="purple" type="color">#9370DB</item>
     <item name="steelblue" type="color">#4682B4</item>
 </resources>
