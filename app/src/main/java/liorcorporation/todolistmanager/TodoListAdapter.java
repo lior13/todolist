@@ -36,8 +36,8 @@ public class TodoListAdapter extends ArrayAdapter<Event> {
         line.setTextColor(curDate.before(arrList.get(position).getDate()) ? Color.BLUE : Color.RED);
         line.setText(arrList.get(position).getTitle());
         date.setTextColor(curDate.before(arrList.get(position).getDate()) ? Color.BLUE : Color.RED);
-        SimpleDateFormat format1 = new SimpleDateFormat("dd-MM-yyyy");
-        date.setText(format1.format(arrList.get(position).getDate()));
+        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+        date.setText(format.format(arrList.get(position).getDate()));
         imageView.setImageResource(R.drawable.todo);
         return convertView;
     }

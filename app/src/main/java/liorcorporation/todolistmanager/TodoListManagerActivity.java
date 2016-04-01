@@ -20,6 +20,7 @@ public class TodoListManagerActivity extends AppCompatActivity {
     private TodoListAdapter arrAdapter;
     private ArrayList<Event> arrList;
     private static final int ADD_RESULT = 1;
+    private DBHandler dbHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,9 +28,9 @@ public class TodoListManagerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         ListView listView = (ListView) findViewById(R.id.listView);
-        arrList = new ArrayList<>();
+        dbHandler = new DBHandler(this);
+        arrList = (ArrayList<Event>)dbHandler.getAllEvents();
         arrAdapter = new TodoListAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, arrList);
         listView.setAdapter(arrAdapter);
 
@@ -44,7 +45,6 @@ public class TodoListManagerActivity extends AppCompatActivity {
                 title.setText(event);
                 if (event.toLowerCase().contains("call"))
             {
-                Toast.makeText(TodoListManagerActivity.this, "HERE!!!", Toast.LENGTH_SHORT).show();
                 Pattern pattern = Pattern.compile("(\\d+\\-*\\d+\\-?)+");
                 final Matcher matcher = pattern.matcher(event);
                 if (matcher.find()) {
@@ -65,6 +65,7 @@ public class TodoListManagerActivity extends AppCompatActivity {
                 dialog.findViewById(R.id.delete).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        dbHandler.deleteEvent(arrList.get(position));
                         arrList.remove(position);
                         arrAdapter.notifyDataSetChanged();
                         dialog.dismiss();
@@ -106,6 +107,7 @@ public class TodoListManagerActivity extends AppCompatActivity {
                 case RESULT_OK:
                     String event = data.getStringExtra("event");
                     Date date = (Date)data.getSerializableExtra("date");
+                    dbHandler.addEvent(new Event(event, date));
                     arrList.add(new Event(event, date));
                     arrAdapter.notifyDataSetChanged();
                     break;
